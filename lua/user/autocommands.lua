@@ -11,7 +11,7 @@
 -- })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "qf", "help" },
+  pattern = { "qf", "help", "fugitive" },
   callback = function()
     vim.cmd [[
       nnoremap <silent> <buffer> q :close<CR>
@@ -48,3 +48,14 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     vim.opt.filetype = "html"
   end
 })
+
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, {
+--   pattern = { "*" },
+--   callback = function()
+--     vim.cmd [[
+--       if line('$') == 1 && getline(1) == ''
+--         RestoreSession
+--       endif
+--     ]]
+--   end,
+-- })

@@ -54,6 +54,7 @@ return packer.startup({
   function(use)
     use "wbthomason/packer.nvim"
     use "nvim-lua/plenary.nvim"
+    use "lewis6991/impatient.nvim"
 
     -- use "rakr/vim-colors-rakr"
     use "NLKNguyen/papercolor-theme"
@@ -63,12 +64,13 @@ return packer.startup({
     use "sainnhe/everforest"
     use "joshdick/onedark.vim"
     use "sainnhe/sonokai"
-    use "yong1le/darkplus.nvim"
     use { "folke/tokyonight.nvim", branch = "main" }
     use "sainnhe/gruvbox-material"
 
     use "kyazdani42/nvim-web-devicons"
     use "nvim-lualine/lualine.nvim"
+    use "norcalli/nvim-colorizer.lua"
+    use "goolord/alpha-nvim"
 
     use "tpope/vim-liquid"
     use {
@@ -78,6 +80,7 @@ return packer.startup({
     use "MaxMEllon/vim-jsx-pretty"
     use "nvim-treesitter/playground"
     use "RRethy/vim-illuminate"
+    use "tpope/vim-sleuth"
 
     use "hrsh7th/nvim-cmp"
     use "hrsh7th/cmp-buffer"
@@ -129,6 +132,7 @@ return packer.startup({
     use "folke/which-key.nvim"
     use "moll/vim-bbye"
     use "nvim-telescope/telescope.nvim"
+    -- use "tpope/vim-obsession"
 
     if PACKER_BOOTSTRAP then
       require("packer").sync()

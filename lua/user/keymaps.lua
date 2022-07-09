@@ -17,6 +17,10 @@ keymap("n", "<Leader>p", '"+p', opts)
 keymap("n", "J", '<C-e>', opts)
 keymap("n", "K", '<C-y>', opts)
 
+-- Insert line
+keymap("n", "<Leader>o", "o<Esc>", opts)
+keymap("n", "<Leader>O", "O<Esc>", opts)
+
 -- Windows
 keymap("n", "<Leader><Right>", ":vertical resize +5<CR>", opts)
 keymap("n", "<Leader><Left>", ":vertical resize -5<CR>", opts)
@@ -50,9 +54,6 @@ keymap("n", "<Leader>mo", ":set modifiable<CR>", opts)
 keymap("n", "<Leader>sw2", ":set shiftwidth=2<CR>", opts)
 keymap("n", "<Leader>sw4", ":set shiftwidth=4<CR>", opts)
 
--- Open notes
-keymap("n", "<Leader>sp", ":sp /mnt/shared/notes.md<CR>G", opts)
-
 -- Exit neovim
 keymap("n", "<Leader>q", "ZQ", opts)
 keymap("n", "<Leader>z", ":qa!<CR>", opts)
@@ -76,6 +77,7 @@ function! JQ()
   setlocal foldmethod=syntax
   nnoremap <buffer> L zo
   nnoremap <buffer> H zc
+  nnoremap <buffer> q ZQ
   execute "%!jq ."
 endfunction
 ]]
@@ -119,6 +121,7 @@ keymap("n", "<C-u>", ":call SmoothScroll(1)<CR>", opts)
 keymap("n", "<C-d>", ":call SmoothScroll(0)<CR>", opts)
 
 -- Buffers
+keymap("n", "<Leader>nn", ":enew<CR>", opts)
 vim.cmd [[
 " Wipe all deleted (unloaded & unlisted) or all unloaded buffers
 function! BufferWipeout(listed) abort

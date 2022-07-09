@@ -12,8 +12,9 @@ keymap("n", "<Leader>dr", ":call vimspector#Restart()<CR>", opts)
 keymap("n", "<Leader>drc", ":call vimspector#RunToCursor()<CR>", opts)
 keymap("n", "<Leader>db", ":call vimspector#ToggleBreakpoint()<CR>", opts)
 keymap("n", "<Leader>dx", ":call vimspector#ClearBreakpoints()<CR>", opts)
-keymap("n", "<Leader>dcc", ':call vimspector#ShowOutput("Console")<CR>', opts)
-keymap("n", "<Leader>dcs", ':call vimspector#ShowOutput("stderr")<CR>', opts)
+keymap("n", "<Leader>dC", ':call vimspector#ShowOutput("Console")<CR>', opts)
+keymap("n", "<Leader>dS", ':call vimspector#ShowOutput("stderr")<CR>', opts)
+keymap("n", "<Leader>dc", ':call vimspector#RunToCursor()<CR>', opts)
 
 -- vim.g.vimspector_enable_mappings = 'HUMAN'
 vim.g.vimspector_base_dir = os.getenv("HOME") .. '/.config/vimspector-config'

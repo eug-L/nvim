@@ -13,6 +13,8 @@ if not gitblame_ok then
   return
 end
 
+local icons = require "user.icons"
+
 local function isempty(s)
   return s == nil or s == ""
 end
@@ -69,10 +71,24 @@ local modified = {
   separator = "%#SLSeparator#",
 }
 
+local diagnostics = {
+  "diagnostics",
+  -- sources = { "nvim_diagnostic" },
+  sections = { "error", "warn", "hint" },
+  symbols = {
+    error = icons.diagnostics.Error .. " ",
+    warn = icons.diagnostics.Warning .. " ",
+    hint = icons.diagnostics.Hint .. " "
+  },
+  colored = false,
+  -- update_in_insert = false,
+  -- always_visible = true,
+}
+
 lualine.setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox-material',
+    theme = require('user.appearance.colorscheme'),
     -- component_separators = { left = '', right = ''},
     component_separators = { left = '', right = ''},
     -- section_separators = { left = '', right = ''},
@@ -93,7 +109,7 @@ lualine.setup {
     lualine_b = {
       'progress',
       'location',
-      'diagnostics',
+      diagnostics,
       -- 'filename',
     },
     lualine_c = {

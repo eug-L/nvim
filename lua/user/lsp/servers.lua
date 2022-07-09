@@ -6,7 +6,7 @@ M.installer_servers = {
 
 M.local_servers = {
 	"tsserver",
-	"theme_check",
+	"theme_check", -- requires .theme-check.yml at root
 	"cssls",
 	"sumneko_lua",
 	"jsonls",

@@ -26,6 +26,7 @@ capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 for _, lsp in ipairs(all_servers) do
 	local settings = {}
+  -- local root_dir = ""
 
 	if lsp == "sumneko_lua" then
 		settings.Lua = {
@@ -45,9 +46,20 @@ for _, lsp in ipairs(all_servers) do
 		}
 	end
 
+  if lsp == "clangd" then
+    capabilities.offsetEncoding = { "utf-16" }
+  end
+
+  -- if lsp == "theme_check" then
+  --   root_dir = function()
+  --     return vim.fn.getcwd()
+  --   end
+  -- end
+
 	lspconfig[lsp].setup({
 		on_attach = require("user.lsp.handlers").on_attach,
 		capabilities = capabilities,
 		settings = settings,
+    -- root_dir,
 	})
 end

@@ -10,5 +10,6 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup({
 	sources = {
 		formatting.stylua,
+    formatting.clang_format,
 	},
 })
