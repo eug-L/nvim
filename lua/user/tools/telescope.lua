@@ -3,38 +3,38 @@ if not status_ok then
   return
 end
 
-local actions = require "telescope.actions"
+local actions = require("telescope.actions")
 
 telescope.setup({
   defaults = {
     bottom_pane = {
       height = 25,
       preview_cutoff = 120,
-      prompt_position = "top"
+      prompt_position = "top",
     },
     center = {
       height = 0.4,
       preview_cutoff = 40,
       prompt_position = "top",
-      width = 0.5
+      width = 0.5,
     },
     cursor = {
       height = 0.9,
       preview_cutoff = 40,
-      width = 0.8
+      width = 0.8,
     },
     horizontal = {
       height = 0.9,
       preview_cutoff = 120,
       prompt_position = "bottom",
-      width = 0.8
+      width = 0.8,
     },
     vertical = {
       height = 0.9,
       preview_cutoff = 40,
       prompt_position = "bottom",
-      width = 0.8
-    }
+      width = 0.8,
+    },
   },
   mappings = {
     i = {
@@ -114,7 +114,7 @@ telescope.setup({
     --   extension_config_key = value,
     -- }
     -- please take a look at the readme of the extension you want to configure
-  }
+  },
 })
 
 local keymap = vim.api.nvim_set_keymap

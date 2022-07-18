@@ -23,7 +23,7 @@ command! BD call fzf#run(fzf#wrap({
 
 command! RestoreSession call fzf#run(fzf#wrap({
   \ 'source': 'ls -a | grep -wvE "^.$|^..$"',
-  \ 'sink': 'source',
+  \ 'sink': '%bd | source',
   \ 'dir': '/mnt/shared/nvim/sessions/',
   \ 'window': {
     \ 'width': 0.3,
@@ -35,7 +35,7 @@ command! RestoreSession call fzf#run(fzf#wrap({
 ]])
 
 vim.env.FZF_DEFAULT_OPTS = os.getenv('FZF_DEFAULT_OPTS') .. ' --preview "bat --color=always"'
-vim.env.FZF_DEFAULT_COMMAND = 'fd --type f'
+vim.env.FZF_DEFAULT_COMMAND = 'fd --type f -H'
 
 vim.g.fzf_colors = {
   fg = {'fg', 'Normal'},

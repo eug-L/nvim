@@ -16,6 +16,8 @@ keymap("n", "<Leader>p", '"+p', opts)
 -- Navigation
 keymap("n", "J", '<C-e>', opts)
 keymap("n", "K", '<C-y>', opts)
+keymap("n", "j", 'gj', opts)
+keymap("n", "k", 'gk', opts)
 
 -- Insert line
 keymap("n", "<Leader>o", "o<Esc>", opts)
@@ -70,68 +72,18 @@ keymap("n", "L", ":tabnext<CR>", opts)
 keymap("n", "<Leader>cd", ":cd %:p:h<CR>:pwd<CR>", opts)
 
 -- Format JSON
-vim.cmd [[
-function! JQ()
-  setlocal modifiable
-  setlocal filetype=json
-  setlocal foldmethod=syntax
-  nnoremap <buffer> L zo
-  nnoremap <buffer> H zc
-  nnoremap <buffer> q ZQ
-  execute "%!jq ."
-endfunction
-]]
 keymap("n", "<Leader>jq", ":call JQ()<CR>", opts)
 
 -- Sessions
-vim.cmd [[
-function! MakeSession()
-  let currentDir = split(getcwd(), "/")[-1]
-  execute "mksession! ".g:sessions_dir."/".currentDir.".vim"
-endfunction
-
-function! CurrentDirSession()
-  let currentDir = split(getcwd(), "/")[-1]
-  execute "source ".g:sessions_dir."/".currentDir.".vim"
-endfunction
-]]
 keymap("n", "<Leader>ss", ":call MakeSession()<CR>", opts)
 keymap("n", "<Leader>rss", ":call CurrentDirSession()<CR>", opts)
 
 -- Scrolling
-vim.cmd [[
-function! SmoothScroll(up)
-  if a:up
-    let scrollaction="\<C-y>"
-  else
-    let scrollaction="\<C-e>"
-  endif
-  exec "normal " . scrollaction
-  redraw
-  let counter=1
-  while counter<&scroll
-    let counter+=1
-    sleep 3m
-    redraw
-    exec "normal " . scrollaction
-  endwhile
-endfunction
-]]
 keymap("n", "<C-u>", ":call SmoothScroll(1)<CR>", opts)
 keymap("n", "<C-d>", ":call SmoothScroll(0)<CR>", opts)
 
 -- Buffers
 keymap("n", "<Leader>nn", ":enew<CR>", opts)
-vim.cmd [[
-" Wipe all deleted (unloaded & unlisted) or all unloaded buffers
-function! BufferWipeout(listed) abort
-    let l:buffers = filter(getbufinfo(), {_, v -> !v.loaded && (!v.listed || a:listed)})
-    if !empty(l:buffers)
-        execute 'bwipeout' join(map(l:buffers, {_, v -> v.bufnr}))
-    endif
-endfunction
-command! -bar -bang BuffersCleanup call BufferWipeout(<bang>0)
-]]
 keymap("n", "<Leader>bc", ":BuffersCleanup!<CR>", opts)
 
 -- Search
@@ -160,3 +112,7 @@ keymap("v", "<Leader>y", '"+y', opts)
 
 -- Highlight all
 keymap("v", "A", "ggvVG", opts)
+
+-- Navigation
+keymap("n", "j", 'gj', opts)
+keymap("n", "k", 'gk', opts)

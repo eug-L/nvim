@@ -16,10 +16,11 @@ dashboard.section.header.val = {
    [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
 }
 dashboard.section.buttons.val = {
-   dashboard.button( "e", icons.ui.NewFile .. "  New File" , ":ene <BAR> startinsert <CR>"),
+   dashboard.button( "e", icons.ui.NewFile .. "  New File" , ":ene <CR>"),
    dashboard.button( "h", icons.ui.History .. "  Recent Files" , ":History<CR>"),
    dashboard.button( "f", icons.ui.Search .. "  Find Files" , ":Files<CR>"),
    dashboard.button( "s", icons.ui.Project .. "  Restore Session" , ":RestoreSession<CR>"),
+   -- dashboard.button( "w", icons.ui.Note .. "  Vimwiki" , ":VimwikiUISelect<CR>"),
    dashboard.button( "q", icons.ui.SignOut .. "  Quit" , ":qa<CR>"),
 }
 local handle = io.popen('fortune')

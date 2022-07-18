@@ -2,13 +2,14 @@ local keymap = vim.api.nvim_set_keymap
 
 local opts = { noremap = true }
 
-keymap("n", "<Leader>dl", ":call vimspector#Launch()<CR>", opts)
+-- keymap("n", "<Leader>dl", ":call vimspector#Launch()<CR>", opts)
+keymap("n", "<Leader>dl", ":call vimspector#Restart()<CR>", opts)
 keymap("n", "<Leader>dX", ":call vimspector#Reset()<CR>", opts)
 keymap("n", "<Leader>si", ":call vimspector#StepInto()<CR>", opts)
 keymap("n", "<Leader>so", ":call vimspector#StepOut()<CR>", opts)
 keymap("n", "<Leader>sv", ":call vimspector#StepOver()<CR>", opts)
 keymap("n", "<Leader>dn", ":call vimspector#Continue()<CR>", opts)
-keymap("n", "<Leader>dr", ":call vimspector#Restart()<CR>", opts)
+-- keymap("n", "<Leader>dr", ":call vimspector#Restart()<CR>", opts)
 keymap("n", "<Leader>drc", ":call vimspector#RunToCursor()<CR>", opts)
 keymap("n", "<Leader>db", ":call vimspector#ToggleBreakpoint()<CR>", opts)
 keymap("n", "<Leader>dx", ":call vimspector#ClearBreakpoints()<CR>", opts)

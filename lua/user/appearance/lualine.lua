@@ -137,18 +137,18 @@ lualine.setup {
     lualine_z = {}
   },
   tabline = {
-    lualine_a = {
+    lualine_a = {},
+    lualine_b = {
       {
         'tabs',
         mode = 0,
       },
     },
-    lualine_b = {},
     lualine_c = {
       {
         'windows',
         show_filename_only = true,
-        show_modifield_status = true,
+        show_modified_status = true,
         padding = 1
       }
     },

@@ -15,3 +15,9 @@ vim.api.nvim_create_user_command(
   "vertical botright help <args>",
   { nargs = "*" }
 )
+
+vim.api.nvim_create_user_command(
+  "W",
+  "lua require('user.functions').write('<bang>')",
+  { bang = true }
+)
