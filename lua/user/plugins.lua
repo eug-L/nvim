@@ -38,10 +38,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd([[packadd packer.nvim]])
 end
 
+-- autocmd BufWritePost plugins.lua source <afile> | PackerSync
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost plugins.lua source <afile>
   augroup end
 ]])
 
@@ -50,22 +51,25 @@ if not packer_ok then
   return
 end
 
+vim.opt.runtimepath:append(os.getenv('HOME') .. '/.local/share/nvim/site/pack/packer/start/onehalf/vim')
+
 return packer.startup({
   function(use)
     use "wbthomason/packer.nvim"
     use "nvim-lua/plenary.nvim"
     use "lewis6991/impatient.nvim"
 
-    -- use "rakr/vim-colors-rakr"
     use "NLKNguyen/papercolor-theme"
-    use "cormacrelf/vim-colors-github"
     use "morhetz/gruvbox"
     use "lifepillar/vim-gruvbox8"
-    use "sainnhe/everforest"
     use "joshdick/onedark.vim"
+    use "sainnhe/everforest"
     use "sainnhe/sonokai"
-    use { "folke/tokyonight.nvim", branch = "main" }
     use "sainnhe/gruvbox-material"
+    use "sainnhe/edge"
+    use { "catppuccin/nvim", as = "catppuccin" }
+    use "cocopon/iceberg.vim"
+    use { "sonph/onehalf", rtp = "vim" }
 
     use "kyazdani42/nvim-web-devicons"
     use "nvim-lualine/lualine.nvim"
@@ -86,8 +90,10 @@ return packer.startup({
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-path"
     use "hrsh7th/cmp-cmdline"
-    use "hrsh7th/cmp-vsnip"
     use "hrsh7th/cmp-nvim-lsp"
+    use "ray-x/lsp_signature.nvim"
+    use "nvim-lua/lsp-status.nvim"
+    -- use 'arkav/lualine-lsp-progress'
 
     use "hrsh7th/vim-vsnip"
     use "rafamadriz/friendly-snippets"
@@ -132,6 +138,7 @@ return packer.startup({
     use "folke/which-key.nvim"
     use "moll/vim-bbye"
     use "nvim-telescope/telescope.nvim"
+    use "ziontee113/color-picker.nvim"
     -- use "tpope/vim-obsession"
 
     if PACKER_BOOTSTRAP then
@@ -146,4 +153,3 @@ return packer.startup({
     },
   }
 })
-

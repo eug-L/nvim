@@ -23,7 +23,7 @@ command! BD call fzf#run(fzf#wrap({
 
 command! RestoreSession call fzf#run(fzf#wrap({
   \ 'source': 'ls -a | grep -wvE "^.$|^..$"',
-  \ 'sink': '%bd | source',
+  \ 'sink': '%bd! | source',
   \ 'dir': '/mnt/shared/nvim/sessions/',
   \ 'window': {
     \ 'width': 0.3,
@@ -34,31 +34,33 @@ command! RestoreSession call fzf#run(fzf#wrap({
 
 ]])
 
-vim.env.FZF_DEFAULT_OPTS = os.getenv('FZF_DEFAULT_OPTS') .. ' --preview "bat --color=always"'
-vim.env.FZF_DEFAULT_COMMAND = 'fd --type f -H'
+vim.env.FZF_DEFAULT_OPTS = os.getenv("FZF_DEFAULT_OPTS") .. ' --preview "bat --color=always"'
+vim.env.FZF_DEFAULT_COMMAND = "fd --type f -H"
 
 vim.g.fzf_colors = {
-  fg = {'fg', 'Normal'},
-  bg = {'bg', 'Normal'},
-  hl = {'fg', 'Comment'},
-	['fg+'] = {'fg', 'CursorLine', 'CursorColumn', 'Normal'},
-	['bg+'] = {'bg', 'CursorLine', 'CursorColumn'},
-	['hl+'] = {'fg', 'Statement'},
-	info = {'fg', 'PreProc'},
-	border = {'fg', 'Ignore'},
-	prompt = {'fg', 'Conditional'},
-	pointer = {'fg', 'Exception'},
-	marker = {'fg', 'Keyword'},
-	spinner = {'fg', 'Label'},
-	header = {'fg', 'Comment'},
+  fg = { "fg", "Normal" },
+  bg = { "bg", "Normal" },
+  hl = { "fg", "Comment" },
+  ["fg+"] = { "fg", "CursorLine", "CursorColumn", "Normal" },
+  ["bg+"] = { "bg", "CursorLine", "CursorColumn" },
+  ["hl+"] = { "fg", "Statement" },
+  info = { "fg", "PreProc" },
+  border = { "fg", "Ignore" },
+  prompt = { "fg", "Conditional" },
+  pointer = { "fg", "Exception" },
+  marker = { "fg", "Keyword" },
+  spinner = { "fg", "Label" },
+  header = { "fg", "Comment" },
 }
 
 vim.g.fzf_layout = {
   window = {
     width = 0.8,
     height = 0.5,
-  }
+  },
 }
+
+vim.g.fzf_buffers_jump = 1
 
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true }
@@ -67,8 +69,8 @@ local opts = { noremap = true }
 
 keymap("n", "<Leader>f", ":Files<CR>", opts)
 keymap("n", "<Leader>g", ":GitFiles<CR>", opts)
-keymap("n", "<Leader>bb", ":Buffers<CR>", opts)
-keymap("n", "<Leader>bd", ":BD<CR>", opts)
+keymap("n", "<Leader>b", ":Buffers<CR>", opts)
+keymap("n", "<Leader>Bd", ":BD<CR>", opts)
 keymap("n", "<Leader>l", ":Lines<CR>", opts)
 keymap("n", "<Leader>sa", ":Rg<CR>", opts)
 keymap("n", "<Leader>st", ":BTags<CR>", opts)

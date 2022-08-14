@@ -1,5 +1,5 @@
 local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true }
+local opts = { noremap = true, silent = true }
 
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -16,8 +16,13 @@ keymap("n", "<Leader>p", '"+p', opts)
 -- Navigation
 keymap("n", "J", '<C-e>', opts)
 keymap("n", "K", '<C-y>', opts)
-keymap("n", "j", 'gj', opts)
-keymap("n", "k", 'gk', opts)
+
+vim.cmd [[
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+]]
+-- keymap("n", "j", 'gj', opts)
+-- keymap("n", "k", 'gk', opts)
 
 -- Insert line
 keymap("n", "<Leader>o", "o<Esc>", opts)
@@ -65,6 +70,7 @@ keymap("n", "<Leader>tn", ":tabnew<CR>", opts)
 keymap("n", "<Leader>tc", ":tabclose<CR>", opts)
 keymap("n", "<Leader>tl", ":+tabmove<CR>", opts)
 keymap("n", "<Leader>th", ":-tabmove<CR>", opts)
+keymap("n", "<Leader>t;", ":tablast<CR>", opts)
 keymap("n", "H", ":tabprevious<CR>", opts)
 keymap("n", "L", ":tabnext<CR>", opts)
 
@@ -75,7 +81,7 @@ keymap("n", "<Leader>cd", ":cd %:p:h<CR>:pwd<CR>", opts)
 keymap("n", "<Leader>jq", ":call JQ()<CR>", opts)
 
 -- Sessions
-keymap("n", "<Leader>ss", ":call MakeSession()<CR>", opts)
+keymap("n", "<Leader>ss", ":call MakeSession()<CR>", {})
 keymap("n", "<Leader>rss", ":call CurrentDirSession()<CR>", opts)
 
 -- Scrolling
@@ -84,7 +90,8 @@ keymap("n", "<C-d>", ":call SmoothScroll(0)<CR>", opts)
 
 -- Buffers
 keymap("n", "<Leader>nn", ":enew<CR>", opts)
-keymap("n", "<Leader>bc", ":BuffersCleanup!<CR>", opts)
+keymap("n", "<Leader>Bc", ":BuffersCleanup!<CR>", opts)
+keymap("n", "<Leader>ee", ":e!<CR>", opts)
 
 -- Search
 keymap("n", "<Leader>se", ":!s ", opts)
@@ -109,10 +116,20 @@ keymap("v", "*", 'y/<C-r>"<CR>', opts)
 
 -- Copy to global clipboard
 keymap("v", "<Leader>y", '"+y', opts)
+keymap("v", "Y", '"+y', opts)
 
 -- Highlight all
 keymap("v", "A", "ggvVG", opts)
 
--- Navigation
-keymap("n", "j", 'gj', opts)
-keymap("n", "k", 'gk', opts)
+-- Reload config
+keymap("n", "<Leader>R", ":lua require('user.functions').reloadConfig()<CR>", opts)
+
+-- Set filetype
+keymap("n", "<Leader>sf", ":set filetype=", {})
+
+-- Formatting
+keymap("n", "<Leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+keymap("v", "<Leader>F", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
+
+-- null-ls
+keymap("n", "<Leader>nl", ":lua require('user.lsp.null-ls')<CR>", opts)

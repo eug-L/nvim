@@ -11,6 +11,7 @@ M.local_servers = {
   "sumneko_lua",
   "jsonls",
   "html",
+  "bashls",
 }
 
 return M

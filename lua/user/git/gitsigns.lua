@@ -52,6 +52,7 @@ gitsigns.setup({
     map("n", "<Leader>hs", ":Gitsigns preview_hunk<CR>")
     map("n", "<Leader>hn", ":Gitsigns next_hunk<CR>")
     map("n", "<Leader>hp", ":Gitsigns prev_hunk<CR>")
+    map("n", "<Leader>hr", ":Gitsigns reset_hunk<CR>")
     map("n", "<Leader>hS", ":Gitsigns stage_hunk<CR>")
     map("n", "<Leader>hU", ":Gitsigns undo_stage_hunk<CR>")
   end

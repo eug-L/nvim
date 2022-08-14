@@ -1,6 +1,23 @@
-local M = {}
+local lsp_signature_ok, signature = pcall(require, "lsp_signature")
+if not lsp_signature_ok then
+  return
+end
 
-local icons = require "user.icons"
+local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not cmp_nvim_lsp_ok then
+  return
+end
+
+local illuminate_ok, illuminate = pcall(require, "illuminate")
+if not illuminate_ok then
+  return
+end
+
+local lsp_status = require("user.lsp.lsp-status")
+local icons = require("user.icons")
+local signature_config = require("user.lsp.lsp-signature").config
+
+local M = {}
 
 M.setup = function()
   local signs = {
@@ -43,21 +60,7 @@ M.setup = function()
   })
 end
 
--- local function lsp_highlight_document(client)
---   -- Set autocommands conditional on server_capabilities
---   if client.resolved_capabilities.document_highlight then
---     vim.api.nvim_exec(
---       [[
---       augroup lsp_document_highlight
---         autocmd! * <buffer>
---         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
---         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
---       augroup END
---     ]],
---       false
---     )
---   end
--- end
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
@@ -71,28 +74,42 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ll", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "v", "<leader>F", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
-  -- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
 local function lsp_highlight_document(client)
-  local status_ok, illuminate = pcall(require, "illuminate")
-  if not status_ok then
-    return
-  end
   illuminate.on_attach(client)
+--   -- Set autocommands conditional on server_capabilities
+--   if client.resolved_capabilities.document_highlight then
+--     vim.api.nvim_exec(
+--       [[
+--       augroup lsp_document_highlight
+--         autocmd! * <buffer>
+--         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+--         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+--       augroup END
+--     ]],
+--       false
+--     )
+--   end
 end
 
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" or client.name == "clangd" then
     client.resolved_capabilities.document_formatting = false
   end
-  -- if client.name == "clangd" then
-  --   client.offsetEncoding = "utf-8"
-  -- end
+
+  M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+  M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+  M.capabilities = vim.tbl_extend("keep", M.capabilities, lsp_status.capabilities)
+  if client.name == "clangd" then
+    M.capabilities.offsetEncoding = { "utf-16" }
+  end
+
+  signature.on_attach(signature_config, bufnr)
+  lsp_status.on_attach(client)
+
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end

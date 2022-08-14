@@ -18,6 +18,7 @@ keymap("n", "<Leader>dS", ':call vimspector#ShowOutput("stderr")<CR>', opts)
 keymap("n", "<Leader>dc", ':call vimspector#RunToCursor()<CR>', opts)
 
 -- vim.g.vimspector_enable_mappings = 'HUMAN'
+vim.g.vimspector_variables_display_mode = 'full'
 vim.g.vimspector_base_dir = os.getenv("HOME") .. '/.config/vimspector-config'
 vim.g.vimspector_sign_priority = {
   vimspectorBP = 11,

@@ -40,6 +40,7 @@ local options = {
   guicursor = "",
   mouse = "a",
   showtabline = 2,
+  guifont = "JetBrainsMonoNL Nerd Font:h10.5",
 }
 
 vim.cmd([[
@@ -49,6 +50,7 @@ syntax on
 " set t_Co=256
 "set t_ZH=<C-V><Esc>3m
 "set t_ZR=<C-V><Esc>23m
+"set formatoptions-=cro
 
 ]])
 

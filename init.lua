@@ -5,14 +5,14 @@ require('user.keymaps')
 require('user.plugins')
 require('user.autocommands')
 
-require('user.git.vim-fugitive')
+-- require('user.git.vim-fugitive')
 require('user.git.gitsigns')
 require('user.git.git-blame')
 
--- require('user.lsp.lsp-setup')
 require('user.lsp.lsp-installer')
 require('user.lsp.handlers').setup()
-require('user.lsp.null-ls')
+-- require('user.lsp.null-ls')
+require('user.lsp.lsp-signature')
 
 require('user.syntax.treesitter')
 require('user.syntax.vim-illuminate')
@@ -25,6 +25,7 @@ require('user.tools.qol.vim-maximizer')
 require('user.tools.qol.whichkey')
 require('user.tools.qol.vim-bbye')
 require('user.tools.qol.registers')
+require('user.tools.qol.vim-tmux-navigator')
 
 require('user.tools.fzf-vim')
 require('user.tools.rnvimr')
@@ -34,6 +35,8 @@ require('user.tools.nvim-tree')
 require('user.tools.vim-rest-console')
 require('user.tools.cmp')
 require('user.tools.telescope')
+require('user.tools.color-picker')
+require('user.tools.toggleterm')
 
 require('user.appearance.colorscheme')
 require('user.appearance.gps')
@@ -44,8 +47,6 @@ require('user.appearance.alpha-nvim')
 
 require('user.highlight')
 require('user.options')
--- require('user.toggleterm')
-
 
 --[[
 function! ConvertAndFillBuffer(from, to, file)
@@ -66,3 +67,8 @@ if executable(s:clip)
   augroup END
 endif
 --]]
+
+-- vim.g.neovide_scroll_animation_length = 0.3
+-- vim.g.neovide_cursor_vfx_mode = "torpedo"
+-- vim.g.neovide_cursor_vfx_mode = "wireframe"
+-- vim.g.neovide_cursor_animation_length=0.13

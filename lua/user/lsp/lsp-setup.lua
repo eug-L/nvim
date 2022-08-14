@@ -5,7 +5,7 @@ end
 
 local servers = require("user.lsp.servers")
 
-function tableConcat(t1, t2)
+local function tableConcat(t1, t2)
   for i = 1, #t2 do
     t1[#t1 + 1] = t2[i]
   end
@@ -14,22 +14,33 @@ end
 
 local all_servers = tableConcat(servers.local_servers, servers.installer_servers)
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
+  autostart = false,
+  -- handlers = {
+  --   ["window/logMessage"] = function(err, method, params, client_id)
+  --     if params and params.type <= vim.lsp.protocol.MessageType.Log then
+  --       vim.lsp.handlers["window/logMessage"](err, method, params, client_id)
+  --     end
+  --   end,
+  --   ["window/showMessage"] = function(err, method, params, client_id)
+  --     if params and params.type <= vim.lsp.protocol.MessageType.Warning.Error then
+  --       vim.lsp.handlers["window/showMessage"](err, method, params, client_id)
+  --     end
+  --   end,
+  -- },
+})
 
-local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not cmp_nvim_lsp_ok then
-  return
-end
-
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+local handlers = require("user.lsp.handlers")
 
 for _, lsp in ipairs(all_servers) do
-  local settings = {}
-  -- local root_dir = ""
+  local params = {
+    on_attach = handlers.on_attach,
+    capabilities = handlers.capabilities,
+    settings = {},
+  }
 
   if lsp == "sumneko_lua" then
-    settings.Lua = {
+    params.settings.Lua = {
       runtime = {
         version = "LuaJIT",
       },
@@ -47,19 +58,25 @@ for _, lsp in ipairs(all_servers) do
   end
 
   if lsp == "clangd" then
-    capabilities.offsetEncoding = { "utf-16" }
+    params.capabilities.offsetEncoding = { "utf-16" }
   end
 
-  -- if lsp == "theme_check" then
-  --   root_dir = function()
-  --     return vim.fn.getcwd()
-  --   end
-  -- end
+  if lsp == "clangd" then
+    local lsp_status_ok, lsp_status = pcall(require, "lsp-status")
+    if not lsp_status_ok then
+      return
+    end
 
-  lspconfig[lsp].setup({
-    on_attach = require("user.lsp.handlers").on_attach,
-    capabilities = capabilities,
-    settings = settings,
-    -- root_dir,
-  })
+    params.init_options = { clangdFileStatus = true }
+    params.handlers = lsp_status.extensions.clangd.setup()
+  end
+
+  lspconfig[lsp].setup(params)
 end
+
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true }
+
+keymap("n", "<Leader>ls", ":LspStart<CR>", opts)
+keymap("n", "<Leader>lx", ":LspStop<CR>", opts)
+keymap("n", "<Leader>li", ":LspInfo<CR>", opts)

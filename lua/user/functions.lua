@@ -45,6 +45,14 @@ function! BufferWipeout(listed) abort
     endif
 endfunction
 command! -bar -bang BuffersCleanup call BufferWipeout(<bang>0)
+
+function! LspStatus() abort
+  if luaeval('#vim.lsp.buf_get_clients() > 0')
+    return luaeval("require('lsp-status').status()")
+  endif
+
+  return ''
+endfunction
 ]]
 
 local M = {}
@@ -99,6 +107,16 @@ M.write = function(bang)
   end
 
   expect(0, function () return vim.fn.delete(askpass) end, 'delete')
+end
+
+M.reloadConfig = function()
+  for name, _ in pairs(package.loaded) do
+    if name:match('^user') then
+      package.loaded[name] = nil
+    end
+  end
+
+  dofile(vim.env.MYVIMRC)
 end
 
 return M
