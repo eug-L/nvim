@@ -26,6 +26,7 @@ require('user.tools.qol.whichkey')
 require('user.tools.qol.vim-bbye')
 require('user.tools.qol.registers')
 require('user.tools.qol.vim-tmux-navigator')
+require('user.tools.qol.harpoon')
 
 require('user.tools.fzf-vim')
 require('user.tools.rnvimr')

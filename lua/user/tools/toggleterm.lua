@@ -51,8 +51,8 @@ toggleterm.setup({
 
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
-  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '\\\\', [[<C-\><C-n>]], opts)
+  -- vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
   vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
   vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
   vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
@@ -63,19 +63,16 @@ vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
 local Terminal = require("toggleterm.terminal").Terminal
 
 local lazygit = Terminal:new({ cmd = "lazygit", count = 5 })
-
 function _LAZYGIT_TOGGLE()
   lazygit:toggle()
 end
 
 local node = Terminal:new({ cmd = "zsh -ic 'nvm use 11 && node'", count = 6 })
-
 function _NODE_TOGGLE()
   node:toggle()
 end
 
 local htop = Terminal:new({ cmd = "htop", count = 7 })
-
 function _HTOP_TOGGLE()
   htop:toggle()
 end
@@ -86,3 +83,4 @@ local opts = { noremap = true, silent = true }
 keymap("n", "<Leader>G", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
 keymap("n", "<Leader>N", ":lua _NODE_TOGGLE()<CR>", opts)
 keymap("n", "<Leader>H", ":lua _HTOP_TOGGLE()<CR>", opts)
+keymap("n", "<Leader>ns", ":1TermExec cmd='n 11 && npm run dev-server' open=0<CR>:2TermExec cmd='n 11 && npm run start' open=0<CR>", { noremap = true })

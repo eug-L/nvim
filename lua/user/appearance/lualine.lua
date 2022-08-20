@@ -97,7 +97,7 @@ local spaces = {
 --   always_visible = true,
 -- }
 
-lualine.setup({
+local config = {
   options = {
     icons_enabled = true,
     theme = require("user.appearance.colorscheme"),
@@ -208,4 +208,12 @@ lualine.setup({
     lualine_z = {},
   },
   extensions = {},
-})
+}
+
+if vim.g.colors_name == "nord" then
+  config.tabline.lualine_a[1].tabs_color = {
+    inactive = 'lualine_b_inactive'
+  }
+end
+
+lualine.setup(config)

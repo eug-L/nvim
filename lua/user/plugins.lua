@@ -59,7 +59,6 @@ return packer.startup({
     use "nvim-lua/plenary.nvim"
     use "lewis6991/impatient.nvim"
 
-    use "NLKNguyen/papercolor-theme"
     use "morhetz/gruvbox"
     use "lifepillar/vim-gruvbox8"
     use "joshdick/onedark.vim"
@@ -70,6 +69,8 @@ return packer.startup({
     use { "catppuccin/nvim", as = "catppuccin" }
     use "cocopon/iceberg.vim"
     use { "sonph/onehalf", rtp = "vim" }
+    use "arcticicestudio/nord-vim"
+    use "rakr/vim-one"
 
     use "kyazdani42/nvim-web-devicons"
     use "nvim-lualine/lualine.nvim"
@@ -140,6 +141,7 @@ return packer.startup({
     use "nvim-telescope/telescope.nvim"
     use "ziontee113/color-picker.nvim"
     -- use "tpope/vim-obsession"
+    use "ThePrimeagen/harpoon"
 
     if PACKER_BOOTSTRAP then
       require("packer").sync()

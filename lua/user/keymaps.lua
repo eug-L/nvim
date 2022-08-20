@@ -94,7 +94,7 @@ keymap("n", "<Leader>Bc", ":BuffersCleanup!<CR>", opts)
 keymap("n", "<Leader>ee", ":e!<CR>", opts)
 
 -- Search
-keymap("n", "<Leader>se", ":!s ", opts)
+keymap("n", "<Leader>se", ":!s ", { noremap = true })
 
 
 
@@ -121,6 +121,16 @@ keymap("v", "Y", '"+y', opts)
 -- Highlight all
 keymap("v", "A", "ggvVG", opts)
 
+-- Formatting
+keymap("v", "<Leader>F", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
+
+-- Split line at space
+keymap("v", "K", "f <ESC>a<BS><CR><ESC>wV", { noremap = true })
+
+
+-- Split line at space
+keymap("n", "<Leader>se", ":!s ", { noremap = true })
+
 -- Reload config
 keymap("n", "<Leader>R", ":lua require('user.functions').reloadConfig()<CR>", opts)
 
@@ -129,7 +139,8 @@ keymap("n", "<Leader>sf", ":set filetype=", {})
 
 -- Formatting
 keymap("n", "<Leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-keymap("v", "<Leader>F", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
 
 -- null-ls
 keymap("n", "<Leader>nl", ":lua require('user.lsp.null-ls')<CR>", opts)
+
+keymap("n", "'", ":lua require('user.functions').harpoonMark()<CR>", opts)

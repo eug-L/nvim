@@ -1,4 +1,4 @@
-local colorscheme = "onedark"
+local colorscheme = "nord"
 vim.opt.background = "dark"
 
 local termguicolorsbl = {

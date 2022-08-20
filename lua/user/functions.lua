@@ -110,6 +110,13 @@ M.write = function(bang)
 end
 
 M.reloadConfig = function()
+  local plenary_reload_ok, plenary_reload = pcall(require, "plenary.reload")
+  if not plenary_reload_ok then
+    return
+  end
+  plenary_reload.reload_module("lualine", true)
+  plenary_reload.reload_module("which-key", true)
+
   for name, _ in pairs(package.loaded) do
     if name:match('^user') then
       package.loaded[name] = nil
@@ -117,6 +124,17 @@ M.reloadConfig = function()
   end
 
   dofile(vim.env.MYVIMRC)
+end
+
+M.harpoonMark = function()
+  local harpoon_ok, harpoon_ui = pcall(require, "harpoon.ui")
+  if not harpoon_ok then
+    return
+  end
+
+  if vim.v.count > 0 then
+    harpoon_ui.nav_file(vim.v.count)
+  end
 end
 
 return M
