@@ -16,6 +16,8 @@ keymap("n", "<Leader>dx", ":call vimspector#ClearBreakpoints()<CR>", opts)
 keymap("n", "<Leader>dC", ':call vimspector#ShowOutput("Console")<CR>', opts)
 keymap("n", "<Leader>dS", ':call vimspector#ShowOutput("stderr")<CR>', opts)
 keymap("n", "<Leader>dc", ':call vimspector#RunToCursor()<CR>', opts)
+keymap("n", "<Leader>dw", ':VimspectorWatch <C-r><C-w><CR>', opts)
+keymap("v", "<Leader>dw", '"ay:VimspectorWatch <C-r>a<CR>', opts)
 
 -- vim.g.vimspector_enable_mappings = 'HUMAN'
 vim.g.vimspector_variables_display_mode = 'full'

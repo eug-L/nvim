@@ -12,6 +12,8 @@ M.local_servers = {
   "jsonls",
   "html",
   "bashls",
+  "cmake",
+  "pyright"
 }
 
 return M

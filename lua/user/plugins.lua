@@ -71,27 +71,38 @@ return packer.startup({
     use { "sonph/onehalf", rtp = "vim" }
     use "arcticicestudio/nord-vim"
     use "rakr/vim-one"
+    use "easysid/mod8.vim"
+    use "arzg/vim-colors-xcode"
+    use "humanoid-colors/vim-humanoid-colorscheme"
+    use "cranberry-clockworks/coal.nvim"
+    use "https://git.sr.ht/~romainl/vim-bruin"
 
     use "kyazdani42/nvim-web-devicons"
     use "nvim-lualine/lualine.nvim"
     use "norcalli/nvim-colorizer.lua"
     use "goolord/alpha-nvim"
+    use "stevearc/dressing.nvim"
 
     use "tpope/vim-liquid"
     use {
       "nvim-treesitter/nvim-treesitter",
       run = ':TSUpdate'
     }
-    use "MaxMEllon/vim-jsx-pretty"
+    -- use "MaxMEllon/vim-jsx-pretty"
+    -- use "pangloss/vim-javascript"
+    -- use "neoclide/vim-jsx-improve"
+    use "sheerun/vim-polyglot"
     use "nvim-treesitter/playground"
     use "RRethy/vim-illuminate"
     use "tpope/vim-sleuth"
+    use "wfxr/minimap.vim"
 
     use "hrsh7th/nvim-cmp"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-path"
     use "hrsh7th/cmp-cmdline"
     use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-vsnip"
     use "ray-x/lsp_signature.nvim"
     use "nvim-lua/lsp-status.nvim"
     -- use 'arkav/lualine-lsp-progress'
@@ -110,6 +121,7 @@ return packer.startup({
 
     use "tpope/vim-capslock"
     use "tpope/vim-commentary"
+    use "folke/todo-comments.nvim"
     use {
       "junegunn/fzf",
       run = function()
@@ -142,6 +154,7 @@ return packer.startup({
     use "ziontee113/color-picker.nvim"
     -- use "tpope/vim-obsession"
     use "ThePrimeagen/harpoon"
+    use "vim-scripts/vis"
 
     if PACKER_BOOTSTRAP then
       require("packer").sync()

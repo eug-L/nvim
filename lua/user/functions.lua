@@ -3,9 +3,9 @@ function! JQ()
   setlocal modifiable
   setlocal filetype=json
   setlocal foldmethod=syntax
-  nnoremap <buffer> L zo
-  nnoremap <buffer> H zc
-  nnoremap <buffer> q ZQ
+  setlocal nowrap
+  nnoremap <buffer> zl zo
+  nnoremap <buffer> zh zc
   execute "%!jq ."
   execute "foldopen!"
 endfunction
@@ -31,7 +31,7 @@ function! SmoothScroll(up)
   let counter=1
   while counter<&scroll
     let counter+=1
-    sleep 3m
+    sleep 2m
     redraw
     exec "normal " . scrollaction
   endwhile
@@ -53,6 +53,18 @@ function! LspStatus() abort
 
   return ''
 endfunction
+
+"function! GetVisualSelection()
+"    let [line_start, column_start] = getpos("'<")[1:2]
+"    let [line_end, column_end] = getpos("'>")[1:2]
+"    let lines = getline(line_start, line_end)
+"    if len(lines) == 0
+"        return ''
+"    endif
+"    let lines[-1] = lines[-1][: column_end - 2]
+"    let lines[0] = lines[0][column_start - 1:]
+"    return join(lines, "\n")
+"endfunction
 ]]
 
 local M = {}
@@ -116,6 +128,7 @@ M.reloadConfig = function()
   end
   plenary_reload.reload_module("lualine", true)
   plenary_reload.reload_module("which-key", true)
+  plenary_reload.reload_module("todo-comments", true)
 
   for name, _ in pairs(package.loaded) do
     if name:match('^user') then
@@ -135,6 +148,31 @@ M.harpoonMark = function()
   if vim.v.count > 0 then
     harpoon_ui.nav_file(vim.v.count)
   end
+end
+
+M.loadNullLS = function()
+  local loaded = false
+  for name, _ in pairs(package.loaded) do
+    if name == 'user.lsp.null-ls' then
+      loaded = true
+    end
+  end
+
+  if not loaded then
+    require('user.lsp.null-ls')
+  end
+end
+
+M.randomString = function(length)
+  local charset = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
+  math.randomseed(os.clock())
+	local ret = {}
+	local r
+	for i = 1, length do
+		r = math.random(1, #charset)
+		table.insert(ret, charset:sub(r, r))
+	end
+	return table.concat(ret)
 end
 
 return M

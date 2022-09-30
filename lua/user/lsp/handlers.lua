@@ -78,22 +78,22 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ll", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
 
-local function lsp_highlight_document(client)
-  illuminate.on_attach(client)
---   -- Set autocommands conditional on server_capabilities
---   if client.resolved_capabilities.document_highlight then
---     vim.api.nvim_exec(
---       [[
---       augroup lsp_document_highlight
---         autocmd! * <buffer>
---         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
---         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
---       augroup END
---     ]],
---       false
---     )
---   end
-end
+-- local function lsp_highlight_document(client)
+--   illuminate.on_attach(client)
+-- --   -- Set autocommands conditional on server_capabilities
+-- --   if client.resolved_capabilities.document_highlight then
+-- --     vim.api.nvim_exec(
+-- --       [[
+-- --       augroup lsp_document_highlight
+-- --         autocmd! * <buffer>
+-- --         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+-- --         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+-- --       augroup END
+-- --     ]],
+-- --       false
+-- --     )
+-- --   end
+-- end
 
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" or client.name == "clangd" then
@@ -111,7 +111,7 @@ M.on_attach = function(client, bufnr)
   lsp_status.on_attach(client)
 
   lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
+  -- lsp_highlight_document(client)
 end
 
 return M

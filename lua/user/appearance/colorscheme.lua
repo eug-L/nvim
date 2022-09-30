@@ -1,5 +1,5 @@
-local colorscheme = "nord"
-vim.opt.background = "dark"
+local colorscheme = "iceberg"
+vim.opt.background = "light"
 
 local termguicolorsbl = {
   'gruvbox8',
@@ -32,8 +32,10 @@ end
 vim.g.catppuccin_flavour = "frappe"
 vim.g.gruvbox_contrast_dark = "hard"
 vim.g.gruvbox_termcolors = 16
-vim.g.gruvbox_material_background = "medium"
-
+vim.g.gruvbox_material_background = "soft"
+vim.g.xcodelight_match_paren_style = 1
+vim.g.xcodelight_green_comments = 1
+vim.g.xcodelight_emph_types = 0
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
@@ -44,5 +46,12 @@ end
 if colorscheme == "iceberg" then
   vim.g.terminal_color_0 = '#757CA3'
 end
+
+if colorscheme == "xcodelight" then
+  vim.g.terminal_color_0 = '#262626'
+end
+
+--   vim.g.terminal_color_0 = '#c2c2c3'
+-- end
 
 return colorscheme

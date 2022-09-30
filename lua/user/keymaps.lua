@@ -20,6 +20,8 @@ keymap("n", "K", '<C-y>', opts)
 vim.cmd [[
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+vnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+vnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 ]]
 -- keymap("n", "j", 'gj', opts)
 -- keymap("n", "k", 'gk', opts)
@@ -35,6 +37,8 @@ keymap("n", "<Leader><Up>", ":resize +2<CR>", opts)
 keymap("n", "<Leader><Down>", ":resize -2<CR>", opts)
 keymap("n", "<Leader>vm", ":resize <CR>", opts)
 keymap("n", "<Leader>wn", "<C-w>w", opts)
+keymap("n", "<Leader>wl", "<C-w>10l", opts)
+keymap("n", "<Leader>wh", "<C-w>10h", opts)
 
 -- Config
 keymap("n", "<Leader>S", ":source ~/.config/nvim/init.lua<CR>", opts)
@@ -78,15 +82,15 @@ keymap("n", "L", ":tabnext<CR>", opts)
 keymap("n", "<Leader>cd", ":cd %:p:h<CR>:pwd<CR>", opts)
 
 -- Format JSON
-keymap("n", "<Leader>jq", ":call JQ()<CR>", opts)
+keymap("n", "<Leader>j", ":call JQ()<CR>", opts)
 
 -- Sessions
 keymap("n", "<Leader>ss", ":call MakeSession()<CR>", {})
 keymap("n", "<Leader>rss", ":call CurrentDirSession()<CR>", opts)
 
 -- Scrolling
-keymap("n", "<C-u>", ":call SmoothScroll(1)<CR>", opts)
-keymap("n", "<C-d>", ":call SmoothScroll(0)<CR>", opts)
+-- keymap("n", "<C-u>", ":call SmoothScroll(1)<CR>", opts)
+-- keymap("n", "<C-d>", ":call SmoothScroll(0)<CR>", opts)
 
 -- Buffers
 keymap("n", "<Leader>nn", ":enew<CR>", opts)
@@ -105,6 +109,9 @@ keymap("i", "<C-w>", "<C-g>u<C-w>", opts)
 
 
 -- VISUAL --
+-- Paste without clearing register
+keymap("v", "p", "\"_dP", opts)
+
 -- Move lines
 keymap("v", "<C-k>", ":m '<-2<CR>gv", opts)
 keymap("v", "<C-j>", ":m '>+1<CR>gv", opts)
@@ -127,6 +134,9 @@ keymap("v", "<Leader>F", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
 -- Split line at space
 keymap("v", "K", "f <ESC>a<BS><CR><ESC>wV", { noremap = true })
 
+-- Substitute
+keymap("v", "<Leader>s", ":s/", { noremap = true })
+
 
 -- Split line at space
 keymap("n", "<Leader>se", ":!s ", { noremap = true })
@@ -140,7 +150,11 @@ keymap("n", "<Leader>sf", ":set filetype=", {})
 -- Formatting
 keymap("n", "<Leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
+-- Color of text under cursor
+keymap("n", "<Leader>ct", ":echo synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'fg')<CR>", opts)
+
 -- null-ls
-keymap("n", "<Leader>nl", ":lua require('user.lsp.null-ls')<CR>", opts)
+-- keymap("n", "<Leader>nl", ":lua require('user.lsp.null-ls')<CR>", opts)
+keymap("n", "<Leader>nl", ":lua require('user.functions').loadNullLS()<CR>", opts)
 
 keymap("n", "'", ":lua require('user.functions').harpoonMark()<CR>", opts)

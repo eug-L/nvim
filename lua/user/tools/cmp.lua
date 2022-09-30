@@ -21,8 +21,8 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      -- elseif vim.fn.call("vsnip#jumpable", {1}) == 1 then
-      --   vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump-next)", true, true, true)
+      elseif vim.fn.call("vsnip#jumpable", {1}) == 1 then
+        vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump-next)", true, true, true)
       else
         fallback()
       end
@@ -72,10 +72,11 @@ cmp.setup {
     },
     { name = "path" },
   },
-  confirm_opts = {
-    behavior = cmp.ConfirmBehavior.Replace,
-    select = false,
-  },
+  -- preselect = cmp.PreselectMode.None,
+  -- confirm_opts = {
+  --   behavior = cmp.ConfirmBehavior.Replace,
+  --   select = false,
+  -- },
   window = {
     documentation = {
       border = "rounded"

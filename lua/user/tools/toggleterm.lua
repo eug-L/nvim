@@ -80,6 +80,8 @@ end
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+keymap("n", "<Leader>Q", ":1ToggleTerm<CR>", opts)
+keymap("n", "<Leader>W", ":2ToggleTerm<CR>", opts)
 keymap("n", "<Leader>G", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
 keymap("n", "<Leader>N", ":lua _NODE_TOGGLE()<CR>", opts)
 keymap("n", "<Leader>H", ":lua _HTOP_TOGGLE()<CR>", opts)

@@ -21,6 +21,32 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "rest" },
+  callback = function()
+    local randomStr = require('user.functions').randomString(5)
+    vim.b.vrc_output_buffer_name = randomStr
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "vimwiki" },
+  callback = function()
+    vim.cmd [[
+      set nowrap
+    ]]
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "minimap" },
+  callback = function()
+    vim.cmd [[
+      set nocursorcolumn
+    ]]
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "markdown" },
   callback = function()
     vim.cmd [[

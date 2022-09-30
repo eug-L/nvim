@@ -13,6 +13,8 @@ if not gitblame_ok then
   return
 end
 
+local colorscheme = require("user.appearance.colorscheme")
+
 -- local icons = require("user.icons")
 
 local function isempty(s)
@@ -100,7 +102,7 @@ local spaces = {
 local config = {
   options = {
     icons_enabled = true,
-    theme = require("user.appearance.colorscheme"),
+    theme = colorscheme,
     -- component_separators = { left = '', right = ''},
     component_separators = { left = "", right = "" },
     -- section_separators = { left = '', right = ''},
@@ -210,7 +212,7 @@ local config = {
   extensions = {},
 }
 
-if vim.g.colors_name == "nord" then
+if colorscheme == "nord" or colorscheme == "mod8" then
   config.tabline.lualine_a[1].tabs_color = {
     inactive = 'lualine_b_inactive'
   }

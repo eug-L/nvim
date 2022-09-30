@@ -32,6 +32,12 @@ command! RestoreSession call fzf#run(fzf#wrap({
   \ 'options': '--preview='
 \ }))
 
+command! -bang -nargs=* BLines
+    \ call fzf#vim#grep(
+    \   'rg --with-filename --column --line-number --no-heading --smart-case . '.fnameescape(expand('%:p')), 1,
+    \   fzf#vim#with_preview({'options': '--layout reverse --query '.shellescape(<q-args>).' --with-nth=4.. --delimiter=":"'}, 'right:50%'))
+    " \   fzf#vim#with_preview({'options': '--layout reverse  --with-nth=-1.. --delimiter="/"'}, 'right:50%'))
+
 ]])
 
 vim.env.FZF_DEFAULT_OPTS = os.getenv("FZF_DEFAULT_OPTS") .. ' --preview "bat --color=always"'
@@ -71,7 +77,7 @@ keymap("n", "<Leader>f", ":Files<CR>", opts)
 keymap("n", "<Leader>g", ":GitFiles<CR>", opts)
 keymap("n", "<Leader>b", ":Buffers<CR>", opts)
 keymap("n", "<Leader>Bd", ":BD<CR>", opts)
-keymap("n", "<Leader>l", ":Lines<CR>", opts)
+-- keymap("n", "<Leader>l", ":Lines<CR>", opts)
 keymap("n", "<Leader>sa", ":Rg<CR>", opts)
 keymap("n", "<Leader>st", ":BTags<CR>", opts)
 keymap("n", "<Leader>sb", ":BLines<CR>", opts)
