@@ -100,6 +100,10 @@ keymap("n", "<Leader>ee", ":e!<CR>", opts)
 -- Search
 keymap("n", "<Leader>se", ":!s ", { noremap = true })
 
+-- Copy file path
+keymap("n", "<Leader>yp", ':let @+ = expand("%")<CR>', opts)
+keymap("n", "<Leader>yP", ':let @+ = expand("%:p")<CR>', opts)
+
 
 
 -- INSERT --

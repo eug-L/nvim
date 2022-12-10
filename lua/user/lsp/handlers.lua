@@ -96,12 +96,12 @@ end
 -- end
 
 M.on_attach = function(client, bufnr)
-  if client.name == "tsserver" or client.name == "clangd" then
-    client.resolved_capabilities.document_formatting = false
-  end
+  -- if client.name == "tsserver" or client.name == "clangd" then
+  --   client.resolved_capabilities.document_formatting = false
+  -- end
 
   M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-  M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+  M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
   M.capabilities = vim.tbl_extend("keep", M.capabilities, lsp_status.capabilities)
   if client.name == "clangd" then
     M.capabilities.offsetEncoding = { "utf-16" }

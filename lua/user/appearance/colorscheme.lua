@@ -1,5 +1,5 @@
-local colorscheme = "iceberg"
-vim.opt.background = "light"
+local colorscheme = "nord"
+vim.opt.background = "dark"
 
 local termguicolorsbl = {
   'gruvbox8',
