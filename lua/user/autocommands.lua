@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "rest" },
   callback = function()
     local randomStr = require('user.functions').randomString(5)
-    vim.b.vrc_output_buffer_name = randomStr
+    vim.b.vrc_output_buffer_name = randomStr .. ".json"
   end,
 })
 
@@ -82,6 +82,29 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 --       if line('$') == 1 && getline(1) == ''
 --         RestoreSession
 --       endif
+--     ]]
+--   end,
+-- })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "svelte" },
+  callback = function()
+    vim.cmd [[
+      setlocal commentstring=<!--%s-->
+    ]]
+  end,
+})
+
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+--   pattern = { "json" },
+--   callback = function()
+--     vim.cmd [[
+--       setlocal modifiable
+--       setlocal foldmethod=syntax
+--       setlocal nowrap
+--       nnoremap <buffer> zl zo
+--       nnoremap <buffer> zh zc
+--       execute "%!jq ."
 --     ]]
 --   end,
 -- })

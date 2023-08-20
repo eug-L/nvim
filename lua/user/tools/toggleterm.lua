@@ -77,6 +77,11 @@ function _HTOP_TOGGLE()
   htop:toggle()
 end
 
+local ranger = Terminal:new({ cmd = "ranger", count = 8 })
+function _RANGER_TOGGLE()
+  ranger:toggle()
+end
+
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
@@ -85,5 +90,6 @@ keymap("n", "<Leader>W", ":2ToggleTerm<CR>", opts)
 keymap("n", "<Leader>G", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
 keymap("n", "<Leader>N", ":lua _NODE_TOGGLE()<CR>", opts)
 keymap("n", "<Leader>H", ":lua _HTOP_TOGGLE()<CR>", opts)
+keymap("n", "<Leader>R", ":lua _RANGER_TOGGLE()<CR>", opts)
 keymap("n", "<Leader>nsa", ":1TermExec cmd='n 11 && npm run dev-server' open=0<CR>:2TermExec cmd='n 11 && npm run start' open=0<CR>", { noremap = true })
 keymap("n", "<Leader>nsb", ":1TermExec cmd='n 16.18 && npm run dev-server' open=0<CR>:2TermExec cmd='n 16.18 && npm run start' open=0<CR>", { noremap = true })

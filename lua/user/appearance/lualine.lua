@@ -212,7 +212,7 @@ local config = {
   extensions = {},
 }
 
-if colorscheme == "nord" or colorscheme == "mod8" then
+if colorscheme == "nord" or colorscheme == "mod8" or colorscheme == "nordfox" then
   config.tabline.lualine_a[1].tabs_color = {
     inactive = 'lualine_b_inactive'
   }

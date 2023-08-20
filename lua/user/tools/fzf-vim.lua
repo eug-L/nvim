@@ -41,7 +41,7 @@ command! -bang -nargs=* BLines
 ]])
 
 vim.env.FZF_DEFAULT_OPTS = os.getenv("FZF_DEFAULT_OPTS") .. ' --preview "bat --color=always"'
-vim.env.FZF_DEFAULT_COMMAND = "fd --type f -H"
+vim.env.FZF_DEFAULT_COMMAND = "fd --type f -H -I"
 
 vim.g.fzf_colors = {
   fg = { "fg", "Normal" },
@@ -66,7 +66,7 @@ vim.g.fzf_layout = {
   },
 }
 
-vim.g.fzf_buffers_jump = 1
+-- vim.g.fzf_buffers_jump = 1
 
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true }

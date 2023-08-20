@@ -83,10 +83,12 @@ keymap("n", "<Leader>cd", ":cd %:p:h<CR>:pwd<CR>", opts)
 
 -- Format JSON
 keymap("n", "<Leader>j", ":call JQ()<CR>", opts)
+-- keymap("n", "<Leader>j", ":lua require('user.functions').newJQ()<CR>", opts)
 
 -- Sessions
-keymap("n", "<Leader>ss", ":call MakeSession()<CR>", {})
+keymap("n", "<Leader>ss", ":call MakeSession('')<CR>", {})
 keymap("n", "<Leader>rss", ":call CurrentDirSession()<CR>", opts)
+keymap("n", "<Leader>ms", "q:icall MakeSession('')<Esc>0f'a", {})
 
 -- Scrolling
 -- keymap("n", "<C-u>", ":call SmoothScroll(1)<CR>", opts)
@@ -104,6 +106,18 @@ keymap("n", "<Leader>se", ":!s ", { noremap = true })
 keymap("n", "<Leader>yp", ':let @+ = expand("%")<CR>', opts)
 keymap("n", "<Leader>yP", ':let @+ = expand("%:p")<CR>', opts)
 
+-- Yank all
+keymap("n", "yA", ':%y+<CR>', opts)
+
+-- Set Wrap
+keymap("n", "sW", ':set wrap<CR>', opts)
+
+-- rest.nvim
+keymap("n", "<Leader>ra", '<Plug>RestNvim', opts)
+keymap("n", "<Leader>rp", '<Plug>RestNvimPreview', opts)
+
+-- JS test comment
+keymap("n", "<Leader>tt", 'A // TEST:<ESC>', opts)
 
 
 -- INSERT --
@@ -133,7 +147,7 @@ keymap("v", "Y", '"+y', opts)
 keymap("v", "A", "ggvVG", opts)
 
 -- Formatting
-keymap("v", "<Leader>F", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
+-- keymap("v", "<Leader>F", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
 
 -- Split line at space
 keymap("v", "K", "f <ESC>a<BS><CR><ESC>wV", { noremap = true })
@@ -146,13 +160,14 @@ keymap("v", "<Leader>s", ":s/", { noremap = true })
 keymap("n", "<Leader>se", ":!s ", { noremap = true })
 
 -- Reload config
-keymap("n", "<Leader>R", ":lua require('user.functions').reloadConfig()<CR>", opts)
+-- keymap("n", "<Leader>R", ":lua require('user.functions').reloadConfig()<CR>", opts)
 
 -- Set filetype
 keymap("n", "<Leader>sf", ":set filetype=", {})
 
 -- Formatting
-keymap("n", "<Leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+-- keymap("n", "<Leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+keymap("n", "<Leader>F", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
 
 -- Color of text under cursor
 keymap("n", "<Leader>ct", ":echo synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'fg')<CR>", opts)

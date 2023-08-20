@@ -3,6 +3,13 @@ if not status_ok then
   return
 end
 
+local install_ok, install = pcall(require, "nvim-treesitter.install")
+if not install_ok then
+  return
+end
+
+install.prefer_git = true
+
 configs.setup {
   ensure_installed = {
     "javascript",
@@ -23,7 +30,7 @@ configs.setup {
     "bash",
     "c",
     "make",
-    -- "http",
+    "http",
   },
   sync_install = false,
   ignore_install = {""},

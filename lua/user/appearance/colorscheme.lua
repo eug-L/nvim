@@ -1,4 +1,4 @@
-local colorscheme = "nord"
+local colorscheme = "onedark"
 vim.opt.background = "dark"
 
 local termguicolorsbl = {
@@ -6,6 +6,7 @@ local termguicolorsbl = {
   'gruvbox8_soft',
   'gruvbox8_hard',
   -- 'onehalflight',
+  -- 'edge',
 }
 
 local function fixColor(value)
@@ -32,10 +33,11 @@ end
 vim.g.catppuccin_flavour = "frappe"
 vim.g.gruvbox_contrast_dark = "hard"
 vim.g.gruvbox_termcolors = 16
-vim.g.gruvbox_material_background = "soft"
+vim.g.gruvbox_material_background = "medium"
 vim.g.xcodelight_match_paren_style = 1
 vim.g.xcodelight_green_comments = 1
 vim.g.xcodelight_emph_types = 0
+vim.g.material_style = "oceanic"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then

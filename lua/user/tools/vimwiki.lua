@@ -11,7 +11,7 @@ vim.g.vimwiki_list = {
   }
 }
 
-vim.g.vimwiki_global_ext = 0
+-- vim.g.vimwiki_global_ext = 0
 
 vim.cmd [[
 function! VimwikiLinkHandler(link)

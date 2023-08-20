@@ -3,6 +3,8 @@ local M = {}
 M.installer_servers = {
   "clangd",
   "tailwindcss",
+  "gopls",
+  "svelte",
 }
 
 M.local_servers = {

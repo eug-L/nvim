@@ -10,7 +10,11 @@ function! JQ()
   execute "foldopen!"
 endfunction
 
-function! MakeSession()
+function! MakeSession(name)
+  if len(a:name) != 0
+    execute "mksession! ".g:sessions_dir."/".a:name.".vim"
+    return
+  endif
   let currentDir = split(getcwd(), "/")[-1]
   execute "mksession! ".g:sessions_dir."/".currentDir.".vim"
 endfunction
@@ -173,6 +177,23 @@ M.randomString = function(length)
 		table.insert(ret, charset:sub(r, r))
 	end
 	return table.concat(ret)
+end
+
+M.newJQ = function()
+  -- setlocal modifiable
+  -- setlocal filetype=json
+  -- setlocal foldmethod=syntax
+  -- setlocal nowrap
+  -- nnoremap <buffer> zl zo
+  -- nnoremap <buffer> zh zc
+  -- execute "%!jq ."
+  -- execute "foldopen!"
+  vim.opt.modifiable = true
+  vim.opt.filetype = "json"
+  vim.opt.foldmethod = "syntax"
+  vim.opt.wrap = false
+  vim.cmd("%!jq .")
+  vim.cmd("foldopen!")
 end
 
 return M

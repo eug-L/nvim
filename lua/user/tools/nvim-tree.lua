@@ -31,6 +31,9 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
     -- height = 30,
     hide_root_folder = false,
     side = "left",
+    float = {
+      enable = true
+    },
     preserve_window_proportions = false,
     number = false,
     relativenumber = true,
@@ -211,3 +214,28 @@ keymap("n", "<Leader>en", ":NvimTreeFindFile<CR>", opts)
 `<C-k>`           toggle_file_info    toggle a popup with file infos about the file under the cursor
 `g?`              toggle_help         toggle help
 --]]
+
+
+-- -- centering float window
+-- local nvim_tree = require('nvim-tree')
+-- local gwidth = vim.api.nvim_list_uis()[1].width
+-- local gheight = vim.api.nvim_list_uis()[1].height
+-- local width = 60
+-- local height = 20
+--  
+-- nvim_tree.setup{
+--   view = {
+--     width = width,
+--     height = height,
+--     float = {
+--       enable = true,
+--       open_win_config = {
+--         relative = "editor",
+--         width = width,
+--         height = height,
+--         row = (gheight - height) * 0.4,
+--         col = (gwidth - width) * 0.5,
+--       }
+--     }
+--   }
+-- }
