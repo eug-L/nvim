@@ -200,6 +200,7 @@ return packer.startup({
     use "ThePrimeagen/harpoon"
     use "vim-scripts/vis"
     use { "mg979/vim-visual-multi", branch = "master" }
+    use "windwp/nvim-autopairs"
 
     use "MunifTanjim/nui.nvim"
     use({
