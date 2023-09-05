@@ -57,6 +57,7 @@ require('user.appearance.dressing')
 require('user.highlight')
 require('user.options')
 
+
 --[[
 function! ConvertAndFillBuffer(from, to, file)
   execute "%!pandoc -f ".a:from." -t ".a:to." ".a:file
