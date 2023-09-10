@@ -18,15 +18,15 @@ cmp.setup {
     end,
   },
   mapping = {
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif vim.fn.call("vsnip#jumpable", {1}) == 1 then
-        vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump-next)", true, true, true)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+    -- ['<Tab>'] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_next_item()
+    --   elseif vim.fn.call("vsnip#jumpable", {1}) == 1 then
+    --     vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump-next)", true, true, true)
+    --   else
+    --     fallback()
+    --   end
+    -- end, { "i", "s" }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()

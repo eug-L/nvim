@@ -109,6 +109,7 @@ return packer.startup({
     -- use 'arkav/lualine-lsp-progress'
     -- use "zbirenbaum/copilot.lua"
     use "github/copilot.vim"
+    use 'Exafunction/codeium.vim'
 
     use "hrsh7th/vim-vsnip"
     use "rafamadriz/friendly-snippets"
