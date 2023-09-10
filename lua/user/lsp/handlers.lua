@@ -13,6 +13,9 @@ if not illuminate_ok then
   return
 end
 
+local navic_ok, navic = pcall(require, "nvim-navic")
+local navbuddy_ok, navbuddy = pcall(require, "nvim-navbuddy")
+
 local lsp_status = require("user.lsp.lsp-status")
 local icons = require("user.icons")
 local signature_config = require("user.lsp.lsp-signature").config
@@ -99,6 +102,15 @@ M.on_attach = function(client, bufnr)
   -- if client.name == "tsserver" or client.name == "clangd" then
   --   client.resolved_capabilities.document_formatting = false
   -- end
+  if client.server_capabilities.documentSymbolProvider then
+    if navic_ok then
+      navic.attach(client, bufnr)
+    end
+    if navbuddy_ok then
+      navbuddy.attach(client, bufnr)
+    end
+  end
+
 
   M.capabilities.textDocument.completion.completionItem.snippetSupport = true
   M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)

@@ -3,8 +3,13 @@ if not lualine_status_ok then
   return
 end
 
-local status_gps_ok, gps = pcall(require, "nvim-gps")
-if not status_gps_ok then
+-- local status_gps_ok, gps = pcall(require, "nvim-gps")
+-- if not status_gps_ok then
+--   return
+-- end
+
+local nvim_navic_ok, navic = pcall(require, "nvim-navic")
+if not nvim_navic_ok then
   return
 end
 
@@ -22,12 +27,13 @@ local function isempty(s)
 end
 
 local nvim_gps = function()
-  local status_ok, gps_location = pcall(gps.get_location, {})
+  local status_ok, gps_location = pcall(navic.get_location, {})
+print(status_ok, navic.get_location(), navic.is_available())
   if not status_ok then
     return ""
   end
 
-  if not gps.is_available() then
+  if not navic.is_available() then
     return ""
   end
 
@@ -117,22 +123,23 @@ local config = {
     --   modified
     -- },
     lualine_a = {
-      {
-        "filename",
-        file_status = true, -- Displays file status (readonly status, modified status)
-        path = 1, -- 0: Just the filename
-        -- 1: Relative path
-        -- 2: Absolute path
-        -- 3: Absolute path, with tilde as the home directory
+      { 'mode' }
+      -- {
+      --   "filename",
+      --   file_status = true, -- Displays file status (readonly status, modified status)
+      --   path = 1, -- 0: Just the filename
+      --   -- 1: Relative path
+      --   -- 2: Absolute path
+      --   -- 3: Absolute path, with tilde as the home directory
 
-        -- shorting_target = 400, -- Shortens path to leave 40 spaces in the window
-        -- for other components. (terrible name, any suggestions?)
-        symbols = {
-          modified = " +", -- Text to show when the file is modified.
-          readonly = " -", -- Text to show when the file is non-modifiable or readonly.
-          unnamed = "[No Name]", -- Text to show for unnamed buffers.
-        },
-      },
+      --   -- shorting_target = 400, -- Shortens path to leave 40 spaces in the window
+      --   -- for other components. (terrible name, any suggestions?)
+      --   symbols = {
+      --     modified = " +", -- Text to show when the file is modified.
+      --     readonly = " -", -- Text to show when the file is non-modifiable or readonly.
+      --     unnamed = "[No Name]", -- Text to show for unnamed buffers.
+      --   },
+      -- },
     },
     -- lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_b = {
@@ -156,7 +163,15 @@ local config = {
       -- 'filename',
     },
     lualine_c = {
-      { nvim_gps },
+      -- { nvim_gps },
+      {
+        function()
+            return navic.get_location()
+        end,
+        cond = function()
+            return navic.is_available()
+        end
+      }
     },
     -- lualine_x = {
     --   'encoding',
@@ -195,7 +210,7 @@ local config = {
     lualine_c = {
       {
         "windows",
-        show_filename_only = true,
+        show_filename_only = false,
         show_modified_status = true,
         padding = 1,
       },

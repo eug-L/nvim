@@ -149,7 +149,19 @@ return packer.startup({
     use "tversteeg/registers.nvim"
     use "christoomey/vim-tmux-navigator"
     use "akinsho/toggleterm.nvim"
-    use "SmiteshP/nvim-gps"
+    -- use "SmiteshP/nvim-gps"
+    use {
+      "SmiteshP/nvim-navic",
+      requires = "neovim/nvim-lspconfig"
+    }
+    use {
+      "SmiteshP/nvim-navbuddy",
+      requires = {
+        "neovim/nvim-lspconfig",
+        "SmiteshP/nvim-navic",
+        "MunifTanjim/nui.nvim",
+      }
+    }
     use "kyazdani42/nvim-tree.lua"
     use "diepm/vim-rest-console"
     use {
@@ -204,14 +216,14 @@ return packer.startup({
     use "windwp/nvim-autopairs"
 
     use "MunifTanjim/nui.nvim"
-    use({
-      "jackMort/ChatGPT.nvim",
-        requires = {
-          "MunifTanjim/nui.nvim",
-          "nvim-lua/plenary.nvim",
-          "nvim-telescope/telescope.nvim"
-        }
-    })
+    -- use({
+    --   "jackMort/ChatGPT.nvim",
+    --     requires = {
+    --       "MunifTanjim/nui.nvim",
+    --       "nvim-lua/plenary.nvim",
+    --       "nvim-telescope/telescope.nvim"
+    --     }
+    -- })
 
     if PACKER_BOOTSTRAP then
       require("packer").sync()
