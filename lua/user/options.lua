@@ -57,6 +57,7 @@ syntax on
 vim.opt.shortmess:append "c"
 vim.opt.path:append "**"
 vim.opt.wildignore:append "**/node_modules/*,**/.git/*,tags,package-lock.json"
+vim.opt.formatoptions:remove { "c", "r", "o" }
 
 vim.g.sessions_dir = '/mnt/shared/nvim/sessions'
 
