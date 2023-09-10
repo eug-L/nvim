@@ -160,10 +160,11 @@ keymap("v", "<Leader>s", ":s/", { noremap = true })
 keymap("n", "<Leader>se", ":!s ", { noremap = true })
 
 -- Reload config
--- keymap("n", "<Leader>R", ":lua require('user.functions').reloadConfig()<CR>", opts)
+keymap("n", "<Leader>R", ":lua require('user.functions').reloadConfig()<CR>", opts)
 
 -- Set filetype
 keymap("n", "<Leader>sf", ":set filetype=", {})
+keymap("n", "<Leader>sfjs", ":set filetype=javascript<CR>", {})
 
 -- Formatting
 -- keymap("n", "<Leader>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
