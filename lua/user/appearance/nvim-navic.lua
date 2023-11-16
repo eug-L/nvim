@@ -45,3 +45,7 @@ navic.setup {
     click = false
 }
 
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true, expr = true }
+
+keymap("n", "<Leader>nv", ":Navbuddy<CR>", {})

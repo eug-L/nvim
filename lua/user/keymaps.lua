@@ -113,7 +113,7 @@ keymap("n", "yA", ':%y+<CR>', opts)
 keymap("n", "sW", ':set wrap<CR>', opts)
 
 -- rest.nvim
-keymap("n", "<Leader>ra", '<Plug>RestNvim', opts)
+keymap("n", "<Leader>rr", '<Plug>RestNvim', opts)
 keymap("n", "<Leader>rp", '<Plug>RestNvimPreview', opts)
 
 -- JS test comment
@@ -160,7 +160,7 @@ keymap("v", "<Leader>s", ":s/", { noremap = true })
 keymap("n", "<Leader>se", ":!s ", { noremap = true })
 
 -- Reload config
-keymap("n", "<Leader>R", ":lua require('user.functions').reloadConfig()<CR>", opts)
+keymap("n", "<Leader>rR", ":lua require('user.functions').reloadConfig()<CR>", opts)
 
 -- Set filetype
 keymap("n", "<Leader>sf", ":set filetype=", {})
