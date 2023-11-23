@@ -108,7 +108,7 @@ return packer.startup({
     use "nvim-lua/lsp-status.nvim"
     -- use 'arkav/lualine-lsp-progress'
     -- use "zbirenbaum/copilot.lua"
-    use "github/copilot.vim"
+    -- use "github/copilot.vim"
     use 'Exafunction/codeium.vim'
 
     use "hrsh7th/vim-vsnip"
