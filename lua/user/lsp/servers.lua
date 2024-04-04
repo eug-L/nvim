@@ -5,6 +5,7 @@ M.installer_servers = {
   "tailwindcss",
   "gopls",
   "svelte",
+  "rust_analyzer",
 }
 
 M.local_servers = {

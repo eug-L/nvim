@@ -31,6 +31,8 @@ configs.setup {
     "c",
     "make",
     "http",
+    "rust",
+    "go",
   },
   sync_install = false,
   ignore_install = {""},
