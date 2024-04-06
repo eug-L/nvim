@@ -45,6 +45,7 @@ require('user.tools.todo-comments')
 require('user.tools.symbols-outline')
 -- require('user.tools.copilot')
 require('user.tools.codeium')
+require('user.tools.session-manager')
 
 require('user.appearance.colorscheme')
 -- require('user.appearance.gps')

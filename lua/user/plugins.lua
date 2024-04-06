@@ -214,6 +214,7 @@ return packer.startup({
     use "vim-scripts/vis"
     use { "mg979/vim-visual-multi", branch = "master" }
     use "windwp/nvim-autopairs"
+    use "Shatur/neovim-session-manager"
 
     use "MunifTanjim/nui.nvim"
     -- use({
