@@ -9,6 +9,8 @@
 vim.g.rnvimr_enable_ex = 0
 vim.g.rnvimr_enable_picker = 1
 
+vim.g.rnvimr_ranger_cmd = {'ranger', '--cmd=set draw_borders both'}
+
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true }
 

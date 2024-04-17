@@ -14,6 +14,8 @@ let g:codeium_filetypes = {
     \ }
 ]]
 
+vim.g.codeium_enabled = false
+
 local M = {}
 
 local next_completion = function()
@@ -35,5 +37,6 @@ local opts = { noremap = true, expr = true }
 keymap("i", "<M-;>", next_completion, opts)
 -- keymap("i", "<M-.>", prev_completion, opts)
 keymap("i", "<M-.>", get_completion, opts)
+keymap("n", "<Leader>ai", ":CodeiumToggle<CR>", { noremap = true })
 
 return M

@@ -15,7 +15,7 @@ end
 local all_servers = tableConcat(servers.local_servers, servers.installer_servers)
 
 lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
-  autostart = false,
+  autostart = true,
   -- handlers = {
   --   ["window/logMessage"] = function(err, method, params, client_id)
   --     if params and params.type <= vim.lsp.protocol.MessageType.Log then
