@@ -12,7 +12,7 @@ M.local_servers = {
   "tsserver",
   "theme_check", -- requires .theme-check.yml at root
   "cssls",
-  -- "sumneko_lua",
+  "lua_ls",
   "jsonls",
   "html",
   "bashls",

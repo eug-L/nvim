@@ -34,3 +34,20 @@ session_manager.setup({
   autosave_only_in_session = true, -- Always autosaves session. If true, only autosaves after a session is active.
   max_path_length = 80,  -- Shorten the display path if length exceeds this threshold. Use 0 if don't want to shorten the path at all.
 })
+
+local config_group = vim.api.nvim_create_augroup('MyConfigGroup', {})
+
+vim.api.nvim_create_autocmd({ 'User' }, {
+  pattern = "SessionLoadPost",
+  group = config_group,
+  callback = function()
+    local cwd = vim.fn.getcwd()
+    local index = string.find(cwd, "/[^/]*$")
+
+    if index ~= nil then
+      cwd = string.sub(cwd, index+1, -1)
+    end
+
+    vim.cmd(":!tmux rename-window " .. cwd)
+  end,
+})
