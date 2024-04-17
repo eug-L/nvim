@@ -7,6 +7,7 @@ vim.g.maplocalleader = " "
 
 
 -- NORMAL --
+keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", opts)
 -- nnoremap <C-j> :m .+1<CR>
 -- nnoremap <C-k> :m .-2<CR>
 
