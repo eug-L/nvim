@@ -105,10 +105,12 @@ local spaces = {
 --   always_visible = true,
 -- }
 
+local theme = colorscheme == "onehalflight" and "ayu_light" or colorscheme
+
 local config = {
   options = {
     icons_enabled = true,
-    theme = colorscheme,
+    theme = theme,
     -- component_separators = { left = '', right = ''},
     component_separators = { left = "", right = "" },
     -- section_separators = { left = '', right = ''},
