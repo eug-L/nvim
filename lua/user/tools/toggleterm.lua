@@ -47,6 +47,7 @@ toggleterm.setup({
     border = "curved",
     winblend = 0,
   },
+  autochdir = true,
 })
 
 function _G.set_terminal_keymaps()
@@ -62,7 +63,7 @@ vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
 
 local Terminal = require("toggleterm.terminal").Terminal
 
-local lazygit = Terminal:new({ cmd = "lazygit", count = 5 })
+local lazygit = Terminal:new({ cmd = "lazygit", count = 5, close_on_exit = true })
 function _LAZYGIT_TOGGLE()
   lazygit:toggle()
 end

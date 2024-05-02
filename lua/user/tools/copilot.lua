@@ -3,6 +3,11 @@ local opts = { noremap = true }
 
 keymap("n", "<Leader>cs", ":Copilot panel<CR>", opts)
 
+vim.cmd [[
+let g:copilot_filetypes = {
+    \ '*': v:false,
+    \ }
+]]
 -- -- copilot.lua
 -- local status_ok, copilot = pcall(require, "copilot")
 -- if not status_ok then
