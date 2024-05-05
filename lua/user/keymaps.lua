@@ -122,6 +122,12 @@ keymap("n", "<Leader>rp", '<Plug>RestNvimPreview', opts)
 -- JS test comment
 keymap("n", "<Leader>tt", 'A // TEST:<ESC>', opts)
 
+-- Add
+keymap("n", "+", "<C-a>", opts)
+
+-- Redo
+keymap("n", "U", "<C-r>", opts)
+
 
 -- INSERT --
 keymap("i", "<C-u>", "<C-g>u<C-u>", opts)
@@ -157,6 +163,9 @@ keymap("v", "K", "f <ESC>a<BS><CR><ESC>wV", { noremap = true })
 
 -- Substitute
 keymap("v", "<Leader>s", ":s/", { noremap = true })
+
+-- Add
+keymap("v", "+", "<C-a>", opts)
 
 
 -- Split line at space

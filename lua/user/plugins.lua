@@ -217,7 +217,12 @@ return packer.startup({
     use "nvim-telescope/telescope.nvim"
     use "ziontee113/color-picker.nvim"
     -- use "tpope/vim-obsession"
-    use "ThePrimeagen/harpoon"
+    -- use "ThePrimeagen/harpoon"
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { {"nvim-lua/plenary.nvim"} }
+    }
     use "vim-scripts/vis"
     use { "mg979/vim-visual-multi", branch = "master" }
     use "windwp/nvim-autopairs"
@@ -232,6 +237,8 @@ return packer.startup({
     --       "nvim-telescope/telescope.nvim"
     --     }
     -- })
+
+    use "ThePrimeagen/vim-be-good"
 
     if PACKER_BOOTSTRAP then
       require("packer").sync()

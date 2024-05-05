@@ -74,14 +74,14 @@ local opts = { noremap = true }
 -- scrolling preview => Shift-Up/Shift-Down
 
 keymap("n", "<Leader>f", ":Files<CR>", opts)
-keymap("n", "<Leader>g", ":GitFiles<CR>", opts)
+keymap("n", "<Leader>gg", ":GitFiles<CR>", opts)
 keymap("n", "<Leader>b", ":Buffers<CR>", opts)
 keymap("n", "<Leader>Bd", ":BD<CR>", opts)
 -- keymap("n", "<Leader>l", ":Lines<CR>", opts)
 keymap("n", "<Leader>sa", ":Rg<CR>", opts)
 keymap("n", "<Leader>st", ":BTags<CR>", opts)
 keymap("n", "<Leader>sb", ":BLines<CR>", opts)
-keymap("n", "<Leader>hh", ":History<CR>", opts)
+keymap("n", "<Leader>H", ":History<CR>", opts)
 keymap("n", "<Leader>c", ":Commits<CR>", opts)
 keymap("n", "<Leader>rs", ":RestoreSession<CR>", opts)
 keymap("n", "<Leader>co", ":Colors<CR>", opts)
