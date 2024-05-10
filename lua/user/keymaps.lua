@@ -91,7 +91,8 @@ keymap("n", "<Leader>j", ":call JQ()<CR>", opts)
 -- keymap("n", "<Leader>rss", ":call CurrentDirSession()<CR>", opts)
 -- keymap("n", "<Leader>ms", "q:icall MakeSession('')<Esc>0f'a", {})
 keymap("n", "<Leader>ss", ":SessionManager save_current_session<CR>", {})
-keymap("n", "<Leader>sr", ":SessionManager load_session<CR>", {})
+keymap("n", "<Leader>sl", ":SessionManager load_session<CR>", {})
+keymap("n", "<Leader>sd", ":SessionManager delete_session<CR>", {})
 
 -- Scrolling
 -- keymap("n", "<C-u>", ":call SmoothScroll(1)<CR>", opts)

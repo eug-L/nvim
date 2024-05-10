@@ -14,6 +14,10 @@ end
 
 -- REQUIRED
 harpoon:setup({
+    settings = {
+      save_on_ui_close = true,
+      save_on_toggle = true,
+    }
       -- default = {
       --   select = function(list_item, list, option)
       --       local keys = vim.api.nvim_replace_termcodes('zz',true,false,true)
