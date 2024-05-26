@@ -35,15 +35,17 @@ cmp.setup {
       end
     end, { "i", "s" }),
     ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<Down>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<Up>'] = cmp.mapping.select_prev_item(),
     ['<C-k>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-j>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ['<C-w>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
+    -- ['<C-w>'] = cmp.mapping({
+    --   i = cmp.mapping.abort(),
+    --   c = cmp.mapping.close(),
+    -- }),
     ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   },
   formatting = {
