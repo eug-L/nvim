@@ -20,8 +20,8 @@ dashboard.section.buttons.val = {
    dashboard.button( "h", icons.ui.History .. "  Recent Files" , ":History<CR>"),
    dashboard.button( "f", icons.ui.Search .. "  Find Files" , ":Files<CR>"),
    dashboard.button( "g", icons.ui.Search .. "  Git Files" , ":GitFiles<CR>"),
-   dashboard.button( "s", icons.ui.Project .. "  Restore Session" , ":SessionManager load_session<CR>"),
-   dashboard.button( "S", icons.ui.Project .. "  Current Dir Session" , ":call CurrentDirSession()<CR>"),
+   -- dashboard.button( "s", icons.ui.Project .. "  Restore Session" , ":SessionManager load_session<CR>"),
+   -- dashboard.button( "S", icons.ui.Project .. "  Current Dir Session" , ":call CurrentDirSession()<CR>"),
    -- dashboard.button( "w", icons.ui.Note .. "  Vimwiki" , ":VimwikiUISelect<CR>"),
    dashboard.button( "q", icons.ui.SignOut .. "  Quit" , ":qa<CR>"),
 }

@@ -28,8 +28,8 @@ vnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 -- keymap("n", "k", 'gk', opts)
 
 -- Insert line
-keymap("n", "<Leader>o", "o<Esc>", opts)
-keymap("n", "<Leader>O", "O<Esc>", opts)
+-- keymap("n", "<Leader>o", "o<Esc>", opts)
+-- keymap("n", "<Leader>O", "O<Esc>", opts)
 
 -- Windows
 keymap("n", "<Leader><Right>", ":vertical resize +5<CR>", opts)
@@ -114,7 +114,7 @@ keymap("n", "<Leader>yP", ':let @+ = expand("%:p")<CR>', opts)
 keymap("n", "yA", ':%y+<CR>', opts)
 
 -- Set Wrap
-keymap("n", "sW", ':set wrap<CR>', opts)
+-- keymap("n", "sW", ':set wrap<CR>', opts)
 
 -- rest.nvim
 keymap("n", "<Leader>rr", '<Plug>RestNvim', opts)
@@ -128,6 +128,10 @@ keymap("n", "+", "<C-a>", opts)
 
 -- Redo
 keymap("n", "U", "<C-r>", opts)
+
+-- Backwards to end of word
+keymap("n", "s", "ge", opts)
+keymap("n", "S", "gE", opts)
 
 
 -- INSERT --
