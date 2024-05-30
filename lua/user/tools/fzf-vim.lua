@@ -41,7 +41,7 @@ command! -bang -nargs=* BLines
 ]])
 
 vim.env.FZF_DEFAULT_OPTS = os.getenv("FZF_DEFAULT_OPTS") .. ' --preview "bat --color=always"'
-vim.env.FZF_DEFAULT_COMMAND = "fd --type f -H"
+vim.env.FZF_DEFAULT_COMMAND = "fd --type f -H --no-require-git"
 
 vim.g.fzf_colors = {
   fg = { "fg", "Normal" },
