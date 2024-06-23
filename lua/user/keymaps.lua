@@ -172,6 +172,9 @@ keymap("v", "<Leader>s", ":s/", { noremap = true })
 -- Add
 keymap("v", "+", "<C-a>", opts)
 
+-- Backwards to end of word
+keymap("v", "s", "ge", opts)
+keymap("v", "S", "gE", opts)
 
 -- Split line at space
 keymap("n", "<Leader>se", ":!s ", { noremap = true })
