@@ -6,6 +6,7 @@ M.installer_servers = {
   "gopls",
   "svelte",
   "rust_analyzer",
+  "intelephense",
 }
 
 M.local_servers = {
