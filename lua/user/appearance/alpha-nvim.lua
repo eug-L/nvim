@@ -30,6 +30,6 @@ local fortune = handle:read("*a")
 handle:close()
 dashboard.section.footer.val = fortune
 dashboard.config.opts.noautocmd = true
-vim.cmd[[autocmd User AlphaReady echo 'ready']]
+-- vim.cmd[[autocmd User AlphaReady echo 'ready']]
 
 alpha.setup(dashboard.config)
