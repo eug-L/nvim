@@ -211,7 +211,8 @@ return packer.startup({
     --     })
     --   end
     -- }
-    use "puremourning/vimspector"
+    -- use "puremourning/vimspector"
+    use "mfussenegger/nvim-dap"
     use "folke/which-key.nvim"
     use "moll/vim-bbye"
     use "nvim-telescope/telescope.nvim"
