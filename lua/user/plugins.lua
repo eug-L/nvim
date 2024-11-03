@@ -59,6 +59,7 @@ return packer.startup({
     use "nvim-lua/plenary.nvim"
     use "lewis6991/impatient.nvim"
 
+    -- THEMES
     use "morhetz/gruvbox"
     use "lifepillar/vim-gruvbox8"
     use "joshdick/onedark.vim"
@@ -78,6 +79,7 @@ return packer.startup({
     use "https://git.sr.ht/~romainl/vim-bruin"
     use "EdenEast/nightfox.nvim"
 
+    -- COSMETICS
     use "kyazdani42/nvim-web-devicons"
     use "nvim-lualine/lualine.nvim"
     use "norcalli/nvim-colorizer.lua"
@@ -98,6 +100,7 @@ return packer.startup({
     use "tpope/vim-sleuth"
     use "wfxr/minimap.vim"
 
+    -- TOOLS
     use "hrsh7th/nvim-cmp"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-path"
@@ -228,6 +231,7 @@ return packer.startup({
     use { "mg979/vim-visual-multi", branch = "master" }
     use "windwp/nvim-autopairs"
     use "Shatur/neovim-session-manager"
+    use "sindrets/diffview.nvim"
 
     use "MunifTanjim/nui.nvim"
     -- use({

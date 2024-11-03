@@ -18,12 +18,12 @@ keymap("n", "<Leader>p", '"+p', opts)
 keymap("n", "J", '<C-e>', opts)
 keymap("n", "K", '<C-y>', opts)
 
-vim.cmd [[
-nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
-nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
-vnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
-vnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
-]]
+-- vim.cmd [[
+-- nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+-- nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+-- vnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+-- vnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+-- ]]
 -- keymap("n", "j", 'gj', opts)
 -- keymap("n", "k", 'gk', opts)
 

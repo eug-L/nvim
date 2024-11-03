@@ -8,9 +8,9 @@ nvim_tree.setup()
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true }
 
-keymap("n", "<Leader>et", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<Leader>nt", ":NvimTreeToggle<CR>", opts)
 -- keymap("n", "<Leader>ef", ":NvimTreeFocus<CR>", opts)
-keymap("n", "<Leader>ef", ":NvimTreeFindFile<CR>", opts)
+keymap("n", "<Leader>nf", ":NvimTreeFindFile<CR>", opts)
 
 -- local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
 -- if not config_status_ok then
