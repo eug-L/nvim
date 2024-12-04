@@ -114,7 +114,7 @@ keymap("n", "<Leader>yP", ':let @+ = expand("%:p")<CR>', opts)
 keymap("n", "yA", ':%y+<CR>', opts)
 
 -- Set Wrap
--- keymap("n", "sW", ':set wrap<CR>', opts)
+keymap("n", "sW", ':set wrap<CR>', opts)
 
 -- rest.nvim
 keymap("n", "<Leader>rr", '<Plug>RestNvim', opts)
@@ -125,6 +125,9 @@ keymap("n", "<Leader>tt", 'A // TEST:<ESC>', opts)
 
 -- Add
 keymap("n", "+", "<C-a>", opts)
+
+-- Subtract
+keymap("n", "-", "<C-x>", opts)
 
 -- Redo
 keymap("n", "U", "<C-r>", opts)
