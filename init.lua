@@ -47,6 +47,7 @@ require('user.tools.symbols-outline')
 -- require('user.tools.copilot')
 require('user.tools.codeium')
 require('user.tools.session-manager')
+require('user.tools.obsidian')
 
 require('user.appearance.colorscheme')
 -- require('user.appearance.gps')

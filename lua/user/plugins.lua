@@ -110,6 +110,8 @@ return packer.startup({
     use "ray-x/lsp_signature.nvim"
     use "nvim-lua/lsp-status.nvim"
     -- use 'arkav/lualine-lsp-progress'
+
+    -- AI
     -- use "zbirenbaum/copilot.lua"
     -- use "github/copilot.vim"
     use 'Exafunction/codeium.vim'
@@ -244,6 +246,24 @@ return packer.startup({
     -- })
 
     use "ThePrimeagen/vim-be-good"
+
+    use({
+      "epwalsh/obsidian.nvim",
+      tag = "*",  -- recommended, use latest release instead of latest commit
+      requires = {
+        "nvim-lua/plenary.nvim",
+      },
+      config = function()
+        require("obsidian").setup({
+          workspaces = {
+            {
+              name = "work",
+              path = "~/Documents/notes/work",
+            },
+          },
+        })
+      end,
+    })
 
     if PACKER_BOOTSTRAP then
       require("packer").sync()
