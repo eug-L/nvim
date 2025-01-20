@@ -261,6 +261,9 @@ return packer.startup({
               path = "~/Documents/notes/work",
             },
           },
+          daily_notes = {
+            folder = "Daily",
+          }
         })
       end,
     })
