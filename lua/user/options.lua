@@ -41,13 +41,14 @@ local options = {
   mouse = "a",
   showtabline = 2,
   guifont = "JetBrainsMonoNL Nerd Font:h10.5",
+  -- termguicolors = true,
 }
 
 vim.cmd([[
 
 filetype plugin on
 syntax on
-" set t_Co=256
+"set &t_Co=256
 "set t_ZH=<C-V><Esc>3m
 "set t_ZR=<C-V><Esc>23m
 "set formatoptions-=cro

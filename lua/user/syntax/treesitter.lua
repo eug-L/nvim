@@ -33,6 +33,7 @@ configs.setup {
     "http",
     "rust",
     "go",
+    "vue",
   },
   sync_install = false,
   ignore_install = {""},

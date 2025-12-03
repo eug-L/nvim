@@ -98,7 +98,7 @@ return packer.startup({
     use "nvim-treesitter/playground"
     use "RRethy/vim-illuminate"
     use "tpope/vim-sleuth"
-    use "wfxr/minimap.vim"
+    -- use "wfxr/minimap.vim"
 
     -- TOOLS
     use "hrsh7th/nvim-cmp"
